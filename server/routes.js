@@ -1,57 +1,57 @@
 const Router = require("koa-router")
-const honks = []
+const skewps = []
 
 const router = new Router()
 
-// Read all honks
-router.get("/honks", (ctx) => {
-  ctx.body = honks
+// Read all skewps
+router.get("/skewps", (ctx) => {
+  ctx.body = skewps
 })
 
-// Read a specific honk
-router.get("/honks/:id", (ctx) => {
-  const honk = honks.find((honk) => honk.id === Number(ctx.params.id))
-  if (honk) {
-    ctx.body = honk
+// Read a specific skewp
+router.get("/skewps/:id", (ctx) => {
+  const skewp = skewps.find((skewp) => skewp.id === Number(ctx.params.id))
+  if (skewp) {
+    ctx.body = skewp
   } else {
     ctx.status = 404
-    ctx.body = { message: "Honk not found" }
+    ctx.body = { message: "skewp not found" }
   }
 })
 
-// Create a new honk
-router.post("/honks", async (ctx) => {
-  const newHonk = {
+// Create a new skewp
+router.post("/skewps", async (ctx) => {
+  const newskewp = {
     ...ctx.request.body,
-    id: honks.length + 1,
+    id: skewps.length + 1,
     timestamp: new Date(),
   }
-  honks.push(newHonk)
+  skewps.push(newskewp)
   ctx.status = 201
-  ctx.body = newHonk
+  ctx.body = newskewp
 })
 
-// Update a specific honk
-router.put("/honks/:id", async (ctx) => {
-  const honkIndex = honks.findIndex((honk) => honk.id === Number(ctx.params.id))
-  if (honkIndex !== -1) {
-    honks[honkIndex] = { ...honks[honkIndex], ...ctx.request.body }
-    ctx.body = honks[honkIndex]
+// Update a specific skewp
+router.put("/skewps/:id", async (ctx) => {
+  const skewpIndex = skewps.findIndex((skewp) => skewp.id === Number(ctx.params.id))
+  if (skewpIndex !== -1) {
+    skewps[skewpIndex] = { ...skewps[skewpIndex], ...ctx.request.body }
+    ctx.body = skewps[skewpIndex]
   } else {
     ctx.status = 404
-    ctx.body = { message: "Honk not found" }
+    ctx.body = { message: "skewp not found" }
   }
 })
 
-// Delete a specific honk
-router.delete("/honks/:id", (ctx) => {
-  const honkIndex = honks.findIndex((honk) => honk.id === Number(ctx.params.id))
-  if (honkIndex !== -1) {
-    honks.splice(honkIndex, 1)
+// Delete a specific skewp
+router.delete("/skewps/:id", (ctx) => {
+  const skewpIndex = skewps.findIndex((skewp) => skewp.id === Number(ctx.params.id))
+  if (skewpIndex !== -1) {
+    skewps.splice(skewpIndex, 1)
     ctx.status = 204
   } else {
     ctx.status = 404
-    ctx.body = { message: "Honk not found" }
+    ctx.body = { message: "skewp not found" }
   }
 })
 
