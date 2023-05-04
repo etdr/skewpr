@@ -1,4 +1,5 @@
-const BASEURL = 'http://104.58.54.201:12367'
+const BASEURL = 'http://localhost:12367'
+// const BASEURL = 'http://104.58.54.201:12367'
 async function getSkewps() {
     const response = await fetch(BASEURL + '/skewps')
     const jsonReply = await response.json()
@@ -10,7 +11,8 @@ const skewpsList = document.getElementById('skewps-list')
 async function appendSkewps() {
     const jsonReply = await getSkewps()
     for (const skewp of jsonReply) {
-        const li = document.createElement("li")
+        
+      const li = document.createElement("li")
         li.setAttribute("skewp-id", skewp.id)
         // li.innerText = scoop.content
         
