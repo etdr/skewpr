@@ -9,6 +9,7 @@
   "author": "Eli T. Drumm",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@koa/cors": "^4.0.0",
     "koa": "^2.14.2",
     "koa-bodyparser": "^4.4.0",
     "koa-router": "^12.0.0"

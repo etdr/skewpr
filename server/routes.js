@@ -1,5 +1,5 @@
 const Router = require("koa-router")
-const skewps = []
+const skewps = require('./skewps')
 
 const router = new Router()
 
@@ -49,6 +49,7 @@ router.delete("/skewps/:id", (ctx) => {
   if (skewpIndex !== -1) {
     skewps.splice(skewpIndex, 1)
     ctx.status = 204
+    ctx.body = 'skewp successfully deleted'
   } else {
     ctx.status = 404
     ctx.body = { message: "skewp not found" }
